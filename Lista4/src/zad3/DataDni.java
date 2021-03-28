@@ -11,18 +11,18 @@ import java.time.Month;
 
 public class DataDni {
 	public static void main(String[] args) throws ParseException {
-		Date d1 = new Date();
-		SimpleDateFormat df1 = new SimpleDateFormat("d-M-y");
+		Date todayDay = new Date();
+		SimpleDateFormat pattern = new SimpleDateFormat("d-M-y");
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Podaj Date urodzenia: ");
 		String dane = sc.nextLine();
 		sc.close();
-		Date d2 = df1.parse(dane);
-		
-		//long daysBetween = DAYS.between(d1, d2);
-		
-		//long daysBetween = ChronoUnit.DAYS.between(d1, d2);
-		System.out.println("Zyjesz " + Math.abs((d1.getTime()-d2.getTime())/(1000*60*60*24))+ " dni");		
+		try 
+		{
+		Date myDate = pattern.parse(dane);
+		System.out.println("Zyjesz " + Math.abs((todayDay.getTime()-myDate.getTime())/(1000*60*60*24))+ " dni");		
+		}
+		catch(ParseException e) {System.out.print("B³¹d");}
 	}
 }
